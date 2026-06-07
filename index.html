@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdulla Al Kayes — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #111118;
+  --bg3: #18181f;
+  --surface: #1e1e28;
+  --surface2: #252530;
+  --border: rgba(255,255,255,0.07);
+  --accent: #00e5a0;
+  --accent2: #7c5cfc;
+  --accent3: #ff6b6b;
+  --text: #f0f0f8;
+  --text2: #9090a8;
+  --text3: #5a5a72;
+  --glow: 0 0 30px rgba(0,229,160,0.15);
+  --card-shadow: 0 4px 30px rgba(0,0,0,0.4);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+[data-theme="light"] {
+  --bg: #f4f4f8;
+  --bg2: #eaeaf0;
+  --bg3: #ffffff;
+  --surface: #ffffff;
+  --surface2: #f0f0f6;
+  --border: rgba(0,0,0,0.08);
+  --text: #12121e;
+  --text2: #505068;
+  --text3: #909098;
+  --glow: 0 0 30px rgba(0,160,120,0.12);
+  --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  overflow-x:hidden;
+  transition:background var(--transition),color var(--transition);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+
+/* ── Noise Overlay ── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:0.5;
+}
+
+/* ── Navigation ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:0 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  height:70px;
+  background:rgba(10,10,15,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:all var(--transition);
+}
+[data-theme="light"] nav{background:rgba(244,244,248,0.85)}
+.nav-logo{
+  font-family:'Syne',sans-serif;
+  font-weight:800;font-size:1.4rem;
+  color:var(--accent);
+  letter-spacing:-0.02em;
+}
+.nav-logo span{color:var(--text)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  color:var(--text2);text-decoration:none;
+  font-size:0.9rem;font-weight:500;
+  transition:color var(--transition);
+  position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:0;height:2px;background:var(--accent);
+  transition:width var(--transition);
+}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{width:100%}
+.nav-controls{display:flex;gap:0.75rem;align-items:center}
+.ctrl-btn{
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--text2);cursor:pointer;
+  border-radius:8px;padding:6px 12px;
+  font-size:0.8rem;font-weight:500;
+  font-family:'DM Sans',sans-serif;
+  transition:all var(--transition);
+}
+.ctrl-btn:hover{background:var(--accent);color:#000;border-color:var(--accent)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:all var(--transition)}
+.mobile-menu{
+  display:none;position:fixed;top:70px;left:0;right:0;
+  background:var(--bg2);border-bottom:1px solid var(--border);
+  padding:1.5rem 5%;z-index:999;
+}
+.mobile-menu.open{display:block}
+.mobile-menu .nav-links{flex-direction:column;gap:1rem}
+
+/* ── Hero ── */
+#home{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:100px 5% 60px;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(0,229,160,0.05) 0%,transparent 70%),
+             radial-gradient(ellipse 50% 40% at 80% 80%,rgba(124,92,252,0.06) 0%,transparent 60%);
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
+  max-width:1200px;margin:0 auto;width:100%;
+  position:relative;z-index:1;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,229,160,0.1);border:1px solid rgba(0,229,160,0.2);
+  padding:6px 14px;border-radius:100px;
+  font-size:0.8rem;color:var(--accent);font-weight:500;
+  margin-bottom:1.5rem;
+  animation:fadeUp 0.6s ease both;
+}
+.hero-tag::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero-name{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2.5rem,5vw,4rem);
+  font-weight:800;line-height:1.1;
+  letter-spacing:-0.03em;
+  animation:fadeUp 0.6s 0.1s ease both;
+}
+.hero-name .highlight{color:var(--accent)}
+.hero-titles{
+  display:flex;flex-direction:column;gap:0.3rem;
+  margin:1rem 0;
+  animation:fadeUp 0.6s 0.2s ease both;
+}
+.hero-title-item{
+  display:flex;align-items:center;gap:10px;
+  font-size:1rem;color:var(--text2);font-weight:400;
+}
+.title-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.hero-desc{
+  color:var(--text2);font-size:1rem;line-height:1.8;
+  margin:1.5rem 0 2rem;max-width:480px;
+  animation:fadeUp 0.6s 0.3s ease both;
+}
+.hero-btns{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  animation:fadeUp 0.6s 0.4s ease both;
+}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--accent);color:#000;
+  padding:12px 28px;border-radius:100px;
+  font-weight:700;font-size:0.95rem;
+  text-decoration:none;border:none;cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  transition:all var(--transition);
+  box-shadow:0 0 0 0 rgba(0,229,160,0.4);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,229,160,0.35)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1.5px solid var(--border);color:var(--text);
+  padding:12px 28px;border-radius:100px;
+  font-weight:500;font-size:0.95rem;
+  text-decoration:none;background:transparent;cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  transition:all var(--transition);
+}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Hero Photo */
+.hero-visual{
+  display:flex;justify-content:center;align-items:center;
+  animation:fadeUp 0.6s 0.2s ease both;
+}
+.photo-wrapper{
+  position:relative;width:320px;height:380px;
+}
+.photo-ring{
+  position:absolute;inset:-12px;
+  border:2px solid rgba(0,229,160,0.3);
+  border-radius:40% 60% 55% 45% / 50% 40% 60% 50%;
+  animation:morph 8s ease-in-out infinite;
+}
+.photo-ring2{
+  position:absolute;inset:-24px;
+  border:1px solid rgba(124,92,252,0.2);
+  border-radius:55% 45% 40% 60% / 40% 55% 45% 60%;
+  animation:morph 10s ease-in-out infinite reverse;
+}
+@keyframes morph{
+  0%,100%{border-radius:40% 60% 55% 45% / 50% 40% 60% 50%}
+  33%{border-radius:60% 40% 45% 55% / 40% 60% 50% 55%}
+  66%{border-radius:45% 55% 60% 40% / 55% 45% 40% 60%}
+}
+/* .photo-box{
+  width:100%;height:100%;
+  border-radius:30% 70% 60% 40% / 50% 40% 60% 50%;
+  background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  font-size:7rem;
+  border:2px solid var(--border);
+  animation:morph 8s ease-in-out infinite;
+  position:relative;
+}
+.photo-box::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,229,160,0.1),rgba(124,92,252,0.1));
+} */
+ .photo-box{
+  width:100%;
+  height:100%;
+  border-radius:30% 70% 60% 40% / 50% 40% 60% 50%;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px solid var(--border);
+  animation:morph 8s ease-in-out infinite;
+  position:relative;
+  background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);
+}
+
+/* 🔥 image fix */
+.photo-box img{
+  width:100%;
+  height:100%;
+  object-fit:cover;   /* 👉 এটা সবচেয়ে গুরুত্বপূর্ণ */
+  display:block;
+  position:relative;
+  z-index:1;
+}
+
+/* overlay */
+.photo-box::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(0,229,160,0.1),rgba(124,92,252,0.1));
+  z-index:2;
+  pointer-events:none;
+}
+.floating-badge{
+  position:absolute;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:8px 14px;
+  font-size:0.78rem;font-weight:600;
+  backdrop-filter:blur(10px);
+  display:flex;align-items:center;gap:6px;
+  box-shadow:var(--card-shadow);
+  color:var(--text);
+}
+.floating-badge i{color:var(--accent)}
+.badge-1{bottom:20px;left:-20px;animation:float 3s ease-in-out infinite}
+.badge-2{top:30px;right:-20px;animation:float 3s ease-in-out 1.5s infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Section Base ── */
+section{padding:100px 5%;position:relative}
+.section-label{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--accent);font-size:0.8rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  margin-bottom:0.75rem;
+}
+.section-label::before{content:'';width:24px;height:2px;background:var(--accent);border-radius:2px}
+.section-title{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2rem,4vw,3rem);
+  font-weight:800;letter-spacing:-0.03em;
+  line-height:1.1;margin-bottom:1rem;
+}
+.section-sub{color:var(--text2);max-width:540px;font-size:1rem;margin-bottom:4rem}
+.max-w{max-width:1200px;margin:0 auto}
+
+/* ── Stats ── */
+#stats{
+  padding:60px 5%;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:var(--bg2);
+}
+.stats-grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;
+  text-align:center;
+}
+.stat-item{padding:2rem}
+.stat-num{
+  font-family:'Syne',sans-serif;
+  font-size:3rem;font-weight:800;
+  color:var(--accent);line-height:1;
+}
+.stat-label{color:var(--text2);font-size:0.9rem;margin-top:0.5rem}
+
+/* ── About ── */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:start;
+}
+.about-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:2rem;
+  margin-bottom:1.5rem;
+  transition:all var(--transition);
+}
+.about-card:hover{border-color:rgba(0,229,160,0.3);box-shadow:var(--glow)}
+.about-card-icon{
+  width:44px;height:44px;border-radius:10px;
+  background:rgba(0,229,160,0.1);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent);font-size:1.1rem;margin-bottom:1rem;
+}
+.about-card h4{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:0.5rem}
+.about-card p{color:var(--text2);font-size:0.95rem}
+.about-text p{color:var(--text2);margin-bottom:1rem;font-size:1rem}
+.edu-item{
+  display:flex;gap:1.5rem;align-items:flex-start;
+  padding:1.25rem 0;border-bottom:1px solid var(--border);
+}
+.edu-item:last-child{border-bottom:none}
+.edu-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(124,92,252,0.1);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent2);font-size:1rem;flex-shrink:0;
+}
+.edu-info h5{font-weight:600;margin-bottom:0.2rem}
+.edu-info p{color:var(--text2);font-size:0.85rem}
+.edu-year{margin-left:auto;font-size:0.8rem;color:var(--text3);white-space:nowrap}
+
+/* ── Skills ── */
+#skills{background:var(--bg2)}
+.skills-tabs{
+  display:flex;gap:0.5rem;margin-bottom:2.5rem;
+}
+.stab{
+  padding:8px 20px;border-radius:100px;
+  border:1.5px solid var(--border);
+  color:var(--text2);cursor:pointer;font-size:0.9rem;font-weight:500;
+  background:transparent;font-family:'DM Sans',sans-serif;
+  transition:all var(--transition);
+}
+.stab.active,.stab:hover{
+  background:var(--accent);color:#000;border-color:var(--accent);font-weight:700;
+}
+.skills-panel{display:none;animation:fadeUp 0.4s ease both}
+.skills-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem}
+.skill-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-sm);padding:1.25rem;
+  text-align:center;cursor:default;
+  transition:all var(--transition);
+}
+.skill-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:var(--glow)}
+.skill-icon{font-size:1.8rem;margin-bottom:0.75rem}
+.skill-name{font-size:0.85rem;font-weight:600;color:var(--text)}
+.skill-level{
+  margin-top:0.75rem;height:3px;
+  background:var(--border);border-radius:2px;overflow:hidden;
+}
+.skill-bar{height:100%;background:var(--accent);border-radius:2px;width:0;transition:width 1.2s ease}
+
+/* ── Services ── */
+.services-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.5rem;
+}
+.service-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:2rem;
+  transition:all var(--transition);position:relative;overflow:hidden;
+}
+.service-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform var(--transition);
+}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card:hover{border-color:rgba(0,229,160,0.2);box-shadow:var(--card-shadow);transform:translateY(-4px)}
+.service-icon{
+  width:52px;height:52px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:1.25rem;
+}
+.icon-green{background:rgba(0,229,160,0.1);color:var(--accent)}
+.icon-purple{background:rgba(124,92,252,0.1);color:var(--accent2)}
+.icon-red{background:rgba(255,107,107,0.1);color:var(--accent3)}
+.service-card h3{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:0.75rem}
+.service-card p{color:var(--text2);font-size:0.9rem;margin-bottom:1.25rem}
+.service-list{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.service-list li{
+  display:flex;align-items:center;gap:8px;
+  font-size:0.88rem;color:var(--text2);
+}
+.service-list li::before{content:'→';color:var(--accent);font-weight:700}
+
+/* ── Projects ── */
+#projects{background:var(--bg2)}
+.filter-bar{
+  display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem;
+}
+.filter-btn{
+  padding:8px 20px;border-radius:100px;
+  border:1.5px solid var(--border);
+  color:var(--text2);cursor:pointer;font-size:0.88rem;font-weight:500;
+  background:transparent;font-family:'DM Sans',sans-serif;
+  transition:all var(--transition);
+}
+.filter-btn.active,.filter-btn:hover{background:var(--accent2);color:#fff;border-color:var(--accent2)}
+.projects-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:1.5rem;
+}
+.project-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+  transition:all var(--transition);
+}
+.project-card:hover{border-color:rgba(124,92,252,0.3);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.project-thumb{
+  height:200px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:4rem;position:relative;overflow:hidden;
+}
+.project-thumb::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 50%,var(--surface));
+}
+.project-body{padding:1.5rem}
+.project-body h3{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:1.1rem;margin-bottom:0.5rem;
+}
+.project-body p{color:var(--text2);font-size:0.88rem;margin-bottom:1rem;line-height:1.6}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.25rem}
+.tag{
+  padding:3px 10px;border-radius:100px;
+  font-size:0.75rem;font-weight:600;
+  background:rgba(124,92,252,0.15);color:var(--accent2);
+}
+.project-links{display:flex;gap:0.75rem}
+.proj-link{
+  display:flex;align-items:center;gap:6px;
+  font-size:0.82rem;font-weight:600;color:var(--text2);
+  text-decoration:none;padding:7px 14px;
+  border:1px solid var(--border);border-radius:8px;
+  transition:all var(--transition);
+}
+.proj-link:hover{color:var(--accent);border-color:var(--accent)}
+.project-card[data-cat]{transition:all 0.3s ease}
+.project-card.hide{display:none}
+
+/* ── Timeline ── */
+.timeline{position:relative;max-width:700px;margin:0 auto}
+.timeline::before{
+  content:'';position:absolute;left:20px;top:0;bottom:0;
+  width:2px;background:linear-gradient(to bottom,var(--accent),var(--accent2));
+}
+.tl-item{
+  display:flex;gap:2rem;align-items:flex-start;
+  padding-bottom:3rem;position:relative;
+}
+.tl-dot{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--surface);border:2px solid var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;color:var(--accent);font-size:1rem;
+  position:relative;z-index:1;
+}
+.tl-content{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-sm);padding:1.25rem;flex:1;
+  transition:all var(--transition);
+}
+.tl-content:hover{border-color:rgba(0,229,160,0.3);box-shadow:var(--glow)}
+.tl-year{font-size:0.78rem;color:var(--accent);font-weight:700;margin-bottom:0.4rem;letter-spacing:0.05em}
+.tl-content h4{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:0.3rem}
+.tl-content p{color:var(--text2);font-size:0.88rem}
+
+/* ── Contact ── */
+#contact{background:var(--bg2)}
+.contact-wrapper{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;
+}
+.contact-info{display:flex;flex-direction:column;gap:1rem}
+.contact-item{
+  display:flex;align-items:center;gap:1rem;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-sm);padding:1.25rem 1.5rem;
+  text-decoration:none;color:var(--text);
+  transition:all var(--transition);
+}
+.contact-item:hover{border-color:var(--accent);box-shadow:var(--glow);transform:translateX(4px)}
+.contact-icon{
+  width:44px;height:44px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.ci-phone{background:rgba(0,229,160,0.1);color:var(--accent)}
+.ci-email{background:rgba(255,107,107,0.1);color:var(--accent3)}
+.ci-whatsapp{background:rgba(37,211,102,0.1);color:#25d366}
+.ci-facebook{background:rgba(24,119,242,0.1);color:#1877f2}
+.ci-linkedin{background:rgba(10,102,194,0.1);color:#0a66c2}
+.ci-github{background:rgba(255,255,255,0.05);color:var(--text)}
+.contact-label{font-size:0.75rem;color:var(--text3);display:block;margin-bottom:0.2rem}
+.contact-value{font-weight:600;font-size:0.95rem}
+
+/* Contact Form */
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-group label{
+  display:block;font-size:0.85rem;font-weight:600;
+  color:var(--text2);margin-bottom:0.4rem;
+}
+.form-group input,.form-group textarea{
+  width:100%;background:var(--surface);
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);padding:12px 16px;
+  color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.95rem;
+  transition:border-color var(--transition);
+  resize:none;
+}
+.form-group input:focus,.form-group textarea:focus{
+  outline:none;border-color:var(--accent);
+}
+.form-submit{
+  background:var(--accent);color:#000;border:none;
+  padding:14px 32px;border-radius:100px;
+  font-weight:700;font-size:1rem;
+  font-family:'DM Sans',sans-serif;cursor:pointer;
+  transition:all var(--transition);
+  display:flex;align-items:center;gap:8px;justify-content:center;
+}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,229,160,0.35)}
+
+/* ── Footer ── */
+footer{
+  text-align:center;padding:3rem 5%;
+  border-top:1px solid var(--border);
+  color:var(--text3);font-size:0.88rem;
+}
+footer .foot-accent{color:var(--accent);font-weight:600}
+
+/* ── Admin Modal ── */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(8px);z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity var(--transition);
+}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:20px;width:90%;max-width:900px;
+  max-height:85vh;overflow-y:auto;
+  padding:2.5rem;
+  transform:translateY(20px);transition:transform var(--transition);
+}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:2rem;
+  padding-bottom:1.5rem;border-bottom:1px solid var(--border);
+}
+.modal-title{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800}
+.modal-close{
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--text);width:36px;height:36px;border-radius:8px;
+  cursor:pointer;font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:all var(--transition);
+}
+.modal-close:hover{background:var(--accent3);border-color:var(--accent3);color:#fff}
+.admin-tabs{display:flex;gap:0.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.atab{
+  padding:8px 18px;border-radius:8px;
+  border:1px solid var(--border);color:var(--text2);
+  cursor:pointer;font-size:0.85rem;font-weight:500;
+  background:transparent;font-family:'DM Sans',sans-serif;
+  transition:all var(--transition);
+}
+.atab.active{background:var(--accent2);color:#fff;border-color:var(--accent2)}
+.admin-panel{display:none}
+.admin-panel.active{display:block}
+.admin-table{width:100%;border-collapse:collapse}
+.admin-table th{
+  text-align:left;padding:10px 14px;
+  font-size:0.8rem;color:var(--text3);font-weight:600;
+  letter-spacing:0.05em;text-transform:uppercase;
+  border-bottom:1px solid var(--border);
+}
+.admin-table td{
+  padding:12px 14px;font-size:0.9rem;
+  border-bottom:1px solid var(--border);vertical-align:middle;
+}
+.admin-table tr:hover td{background:var(--surface)}
+.badge{
+  padding:3px 10px;border-radius:100px;
+  font-size:0.75rem;font-weight:600;
+}
+.badge-green{background:rgba(0,229,160,0.1);color:var(--accent)}
+.badge-purple{background:rgba(124,92,252,0.15);color:var(--accent2)}
+.action-btns{display:flex;gap:0.4rem}
+.act-btn{
+  padding:4px 12px;border-radius:6px;
+  border:1px solid var(--border);font-size:0.78rem;font-weight:600;
+  cursor:pointer;background:transparent;
+  font-family:'DM Sans',sans-serif;transition:all var(--transition);
+}
+.act-edit{color:var(--accent);border-color:rgba(0,229,160,0.3)}
+.act-del{color:var(--accent3);border-color:rgba(255,107,107,0.3)}
+.act-edit:hover{background:var(--accent);color:#000;border-color:var(--accent)}
+.act-del:hover{background:var(--accent3);color:#fff;border-color:var(--accent3)}
+.msg-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-sm);padding:1.25rem;margin-bottom:1rem;
+}
+.msg-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:0.5rem;
+}
+.msg-sender{font-weight:700;font-size:0.95rem}
+.msg-time{font-size:0.78rem;color:var(--text3)}
+.msg-email{font-size:0.82rem;color:var(--text2);margin-bottom:0.5rem}
+.msg-body{font-size:0.88rem;color:var(--text2);line-height:1.6}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:2rem;right:2rem;
+  background:var(--surface);border:1px solid var(--accent);
+  border-radius:var(--radius-sm);padding:1rem 1.5rem;
+  font-size:0.9rem;font-weight:500;
+  box-shadow:var(--card-shadow);z-index:99999;
+  display:flex;align-items:center;gap:10px;
+  transform:translateY(100px);opacity:0;
+  transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.toast.show{transform:translateY(0);opacity:1}
+.toast i{color:var(--accent);font-size:1.1rem}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-wrapper{grid-template-columns:1fr}
+  .hero-visual{order:-1}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .projects-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .photo-wrapper{width:240px;height:290px}
+  .skills-panel{grid-template-columns:repeat(2,1fr)}
+}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.7s cubic-bezier(0.4,0,0.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AK<span>.</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" data-en="Home" data-bn="হোম">Home</a></li>
+    <li><a href="#about" data-en="About" data-bn="পরিচয়">About</a></li>
+    <li><a href="#skills" data-en="Skills" data-bn="দক্ষতা">Skills</a></li>
+    <li><a href="#services" data-en="Services" data-bn="সেবা">Services</a></li>
+    <li><a href="#projects" data-en="Projects" data-bn="প্রজেক্ট">Projects</a></li>
+    <li><a href="#timeline" data-en="Timeline" data-bn="টাইমলাইন">Timeline</a></li>
+    <li><a href="#contact" data-en="Contact" data-bn="যোগাযোগ">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button class="ctrl-btn" id="langToggle" onclick="toggleLang()">বাংলা</button>
+    <button class="ctrl-btn" id="themeToggle" onclick="toggleTheme()">☀ Light</button>
+    <button class="ctrl-btn" onclick="openAdmin()">⚙ Admin</button>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul class="nav-links">
+    <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+    <li><a href="#about" onclick="toggleMenu()">About</a></li>
+    <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+    <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+    <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+    <li><a href="#timeline" onclick="toggleMenu()">Timeline</a></li>
+    <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid max-w">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span data-en="Available for work" data-bn="কাজের জন্য প্রস্তুত">Available for work</span>
+      </div>
+      <h1 class="hero-name">
+        <span data-en="Abdulla" data-bn="আব্দুল্লাহ">Abdulla</span><br>
+        <span class="highlight">Al Kayes</span>
+      </h1>
+      <div class="hero-titles">
+        <div class="hero-title-item"><span class="title-dot" style="background:var(--accent2)"></span><span data-en="ASP.NET Developer" data-bn="এএসপি.নেট ডেভেলপার">ASP.NET Developer</span></div>
+        <div class="hero-title-item"><span class="title-dot" style="background:var(--accent3)"></span><span data-en="Full Stack Developer" data-bn="ফুল স্ট্যাক ডেভেলপার">Full Stack Developer</span></div>
+        <div class="hero-title-item"><span class="title-dot"></span><span data-en="Graphic Designer" data-bn="গ্রাফিক ডিজাইনার">Graphic Designer</span></div>
+      </div>
+      <p class="hero-desc" data-en="I am Abdulla Al Kayes — a passionate Graphic Designer & ASP.NET Developer. I love creating modern web applications and creative design solutions that make an impact." data-bn="আমি আব্দুল্লাহ আল কায়েস। আমি একজন গ্রাফিক ডিজাইনার ও এএসপি.নেট ডেভেলপার। আধুনিক ওয়েব অ্যাপ্লিকেশন ও ক্রিয়েটিভ ডিজাইন সলিউশন তৈরিতে আগ্রহী।">I am Abdulla Al Kayes — a passionate Graphic Designer & ASP.NET Developer. I love creating modern web applications and creative design solutions that make an impact.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary" data-en="Hire Me" data-bn="কাজ দিন">
+          <i class="fas fa-paper-plane"></i> Hire Me
+        </a>
+        <!-- <a href="Kayes.pdf" class="btn-outline" onclick="showToast('CV ডাউনলোড শুরু হচ্ছে...')" data-en="Download CV" data-bn="সিভি ডাউনলোড">
+          <i class="fas fa-download"></i> Download CV
+        </a> -->
+        <a href="Kayes.zip" download class="btn-outline"
+   onclick="showToast('CV ডাউনলোড শুরু হচ্ছে...')"
+   data-en="Download CV" data-bn="সিভি ডাউনলোড">
+  <i class="fas fa-download"></i> Download CV
+</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="photo-wrapper">
+        <div class="photo-ring"></div>
+        <div class="photo-ring2"></div>
+        <div class="photo-box">
+  <img src="WhatsApp Image 2026-06-07 at 12.13.01 PM.jpeg" alt="My Photo">
+</div>
+        <div class="floating-badge badge-1"><i class="fas fa-palette"></i> <span data-en="Designer" data-bn="ডিজাইনার">Designer</span></div>
+        <div class="floating-badge badge-2"><i class="fas fa-code"></i> <span data-en="Developer" data-bn="ডেভেলপার">Developer</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="20">0</div>
+      <div class="stat-label" data-en="Projects Completed" data-bn="প্রজেক্ট সম্পন্ন">Projects Completed</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="10">0</div>
+      <div class="stat-label" data-en="Happy Clients" data-bn="সন্তুষ্ট ক্লায়েন্ট">Happy Clients</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="8">0</div>
+      <div class="stat-label" data-en="Technologies Mastered" data-bn="প্রযুক্তি আয়ত্ত">Technologies Mastered</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="4">0</div>
+      <div class="stat-label" data-en="Years Experience" data-bn="বছরের অভিজ্ঞতা">Years Experience</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="max-w">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label" data-en="About Me" data-bn="আমার পরিচয়">About Me</div>
+        <h2 class="section-title" data-en="Crafting digital experiences with passion" data-bn="আবেগ দিয়ে ডিজিটাল অভিজ্ঞতা তৈরি করি">Crafting digital experiences with passion</h2>
+        <p data-en="I'm Abdulla Al Kayes, a multidisciplinary creator from Bangladesh. I combine design aesthetics with technical development skills to build compelling digital experiences." data-bn="আমি আব্দুল্লাহ আল কায়েস, বাংলাদেশের একজন মাল্টিডিসিপ্লিনারি ক্রিয়েটর। আমি ডিজাইন এবং টেকনিক্যাল দক্ষতা একত্রিত করে ডিজিটাল অভিজ্ঞতা তৈরি করি।">I'm Abdulla Al Kayes, a multidisciplinary creator from Bangladesh. I combine design aesthetics with technical development skills to build compelling digital experiences.</p>
+        <p data-en="Currently focused on mastering ASP.NET Core and building full-stack web applications. My goal is to work as a professional Full Stack Developer and contribute to meaningful projects." data-bn="বর্তমানে ASP.NET Core আয়ত্ত করা এবং ফুল-স্ট্যাক ওয়েব অ্যাপ্লিকেশন তৈরিতে মনোনিবেশ করছি। লক্ষ্য হলো একজন প্রফেশনাল ফুল স্ট্যাক ডেভেলপার হিসেবে কাজ করা।">Currently focused on mastering ASP.NET Core and building full-stack web applications. My goal is to work as a professional Full Stack Developer and contribute to meaningful projects.</p>
+
+        <!-- <div style="margin-top:2rem">
+          <div class="section-label" data-en="Education" data-bn="শিক্ষা">Education</div>
+          <div class="edu-item">
+            <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="edu-info">
+              <h5 data-en="SSC — Secondary School Certificate" data-bn="এসএসসি — মাধ্যমিক সার্টিফিকেট">SSC — Secondary School Certificate</h5>
+              <p data-en="Science Group" data-bn="বিজ্ঞান বিভাগ">Science Group</p>
+            </div>
+            <span class="edu-year">2022</span>
+          </div>
+          <div class="edu-item">
+            <div class="edu-icon" style="background:rgba(255,107,107,0.1);color:var(--accent3)"><i class="fas fa-school"></i></div>
+            <div class="edu-info">
+              <h5 data-en="HSC — Higher Secondary Certificate" data-bn="এইচএসসি — উচ্চমাধ্যমিক সার্টিফিকেট">HSC — Higher Secondary Certificate</h5>
+              <p data-en="Science Group" data-bn="বিজ্ঞান বিভাগ">Science Group</p>
+            </div>
+            <span class="edu-year">2024</span>
+          </div>
+        </div> -->
+      </div>
+      <div class="reveal">
+        <div class="about-card">
+          <div class="about-card-icon"><i class="fas fa-bullseye"></i></div>
+          <h4 data-en="Career Goal" data-bn="ক্যারিয়ার লক্ষ্য">Career Goal</h4>
+          <p data-en="To become a professional Full Stack Developer & Graphic Designer, building impactful web applications and creative solutions for real-world problems." data-bn="একজন প্রফেশনাল ফুল স্ট্যাক ডেভেলপার ও গ্রাফিক ডিজাইনার হওয়া, বাস্তব সমস্যার জন্য ইম্প্যাক্টফুল ওয়েব অ্যাপ্লিকেশন তৈরি করা।">To become a professional Full Stack Developer & Graphic Designer, building impactful web applications and creative solutions for real-world problems.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon" style="background:rgba(124,92,252,0.1);color:var(--accent2)"><i class="fas fa-book-open"></i></div>
+          <h4 data-en="Currently Learning" data-bn="বর্তমানে শিখছি">Currently Learning</h4>
+          <p data-en="Advanced ASP.NET Core MVC, Entity Framework Core, REST APIs, React.js for frontend, and Docker for containerization." data-bn="অ্যাডভান্সড ASP.NET Core MVC, Entity Framework Core, REST API, ফ্রন্টএন্ডের জন্য React.js, এবং Docker।">Advanced ASP.NET Core MVC, Entity Framework Core, REST APIs, React.js for frontend, and Docker for containerization.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon" style="background:rgba(255,107,107,0.1);color:var(--accent3)"><i class="fas fa-heart"></i></div>
+          <h4 data-en="What Drives Me" data-bn="কী অনুপ্রাণিত করে">What Drives Me</h4>
+          <p data-en="Creating clean, functional, and beautiful digital products. I believe good design and good code go hand in hand." data-bn="পরিষ্কার, কার্যকরী এবং সুন্দর ডিজিটাল পণ্য তৈরি করা। আমি বিশ্বাস করি ভালো ডিজাইন এবং ভালো কোড একসাথে চলে।">Creating clean, functional, and beautiful digital products. I believe good design and good code go hand in hand.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="max-w">
+    <div class="section-label reveal" data-en="What I Know" data-bn="আমি কী জানি">What I Know</div>
+    <h2 class="section-title reveal" data-en="My Skills" data-bn="আমার দক্ষতা">My Skills</h2>
+    <p class="section-sub reveal" data-en="A blend of creative design tools and modern web development technologies." data-bn="ক্রিয়েটিভ ডিজাইন টুলস এবং আধুনিক ওয়েব ডেভেলপমেন্ট প্রযুক্তির সমন্বয়।">A blend of creative design tools and modern web development technologies.</p>
+    <div class="skills-tabs">
+      <button class="stab active" onclick="switchSkill('dev')" data-en="Development Skills" data-bn="ডেভেলপমেন্ট দক্ষতা">Development Skills</button>
+      <button class="stab" onclick="switchSkill('design')" data-en="Design Skills" data-bn="ডিজাইন দক্ষতা">Design Skills</button>
+    </div>
+    <div class="skills-panel" id="panel-design">
+      <div class="skill-card reveal"><div class="skill-icon">🎨</div><div class="skill-name">Adobe Photoshop</div><div class="skill-level"><div class="skill-bar" data-w="90"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">✏️</div><div class="skill-name">Adobe Illustrator</div><div class="skill-level"><div class="skill-bar" data-w="85"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🏷️</div><div class="skill-name">Logo Design</div><div class="skill-level"><div class="skill-bar" data-w="88"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">📱</div><div class="skill-name">Social Media Design</div><div class="skill-level"><div class="skill-bar" data-w="92"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🌟</div><div class="skill-name">Branding</div><div class="skill-level"><div class="skill-bar" data-w="80"></div></div></div>
+    </div>
+    <div class="skills-panel active" id="panel-dev">
+      <div class="skill-card reveal"><div class="skill-icon">🌐</div><div class="skill-name">HTML5</div><div class="skill-level"><div class="skill-bar" data-w="95"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🎨</div><div class="skill-name">CSS3</div><div class="skill-level"><div class="skill-bar" data-w="90"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">⚡</div><div class="skill-name">JavaScript</div><div class="skill-level"><div class="skill-bar" data-w="78"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🅱️</div><div class="skill-name">Bootstrap</div><div class="skill-level"><div class="skill-bar" data-w="88"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">⚙️</div><div class="skill-name">C#</div><div class="skill-level"><div class="skill-bar" data-w="82"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🔷</div><div class="skill-name">ASP.NET Core</div><div class="skill-level"><div class="skill-bar" data-w="80"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🗄️</div><div class="skill-name">SQL Server</div><div class="skill-level"><div class="skill-bar" data-w="75"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🔗</div><div class="skill-name">Entity Framework</div><div class="skill-level"><div class="skill-bar" data-w="76"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🐙</div><div class="skill-name">Git & GitHub</div><div class="skill-level"><div class="skill-bar" data-w="84"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="max-w">
+    <div class="section-label reveal" data-en="What I Offer" data-bn="আমি কী দিই">What I Offer</div>
+    <h2 class="section-title reveal" data-en="My Services" data-bn="আমার সেবাসমূহ">My Services</h2>
+    <p class="section-sub reveal" data-en="From visual identity to full-stack web applications — I've got you covered." data-bn="ভিজ্যুয়াল আইডেন্টিটি থেকে ফুল-স্ট্যাক ওয়েব অ্যাপ্লিকেশন পর্যন্ত — সব কিছু আছে।">From visual identity to full-stack web applications — I've got you covered.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon icon-purple"><i class="fas fa-code"></i></div>
+        <h3 data-en="Web Development" data-bn="ওয়েব ডেভেলপমেন্ট">Web Development</h3>
+        <p data-en="Full-stack web applications built with modern technologies and best practices." data-bn="আধুনিক প্রযুক্তি ব্যবহার করে তৈরি ফুল-স্ট্যাক ওয়েব অ্যাপ্লিকেশন।">Full-stack web applications built with modern technologies and best practices.</p>
+        <ul class="service-list">
+          <li data-en="Portfolio Website" data-bn="পোর্টফোলিও ওয়েবসাইট">Portfolio Website</li>
+          <li data-en="Business Website" data-bn="বিজনেস ওয়েবসাইট">Business Website</li>
+          <li data-en="E-Commerce Website" data-bn="ই-কমার্স ওয়েবসাইট">E-Commerce Website</li>
+          <li data-en="Management System" data-bn="ম্যানেজমেন্ট সিস্টেম">Management System</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon icon-red"><i class="fas fa-database"></i></div>
+        <h3 data-en="Database & Backend" data-bn="ডেটাবেজ ও ব্যাকএন্ড">Database & Backend</h3>
+        <p data-en="Robust backend systems with clean architecture and optimized database design." data-bn="ক্লিন আর্কিটেকচার এবং অপটিমাইজড ডেটাবেজ ডিজাইন সহ শক্তিশালী ব্যাকএন্ড সিস্টেম।">Robust backend systems with clean architecture and optimized database design.</p>
+        <ul class="service-list">
+          <li data-en="SQL Server Database Design" data-bn="SQL সার্ভার ডেটাবেজ ডিজাইন">SQL Server Database Design</li>
+          <li data-en="REST API Development" data-bn="REST API ডেভেলপমেন্ট">REST API Development</li>
+          <li data-en="Admin Panel Development" data-bn="অ্যাডমিন প্যানেল ডেভেলপমেন্ট">Admin Panel Development</li>
+          <li data-en="EF Core Integration" data-bn="EF Core ইন্টিগ্রেশন">EF Core Integration</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon icon-green"><i class="fas fa-palette"></i></div>
+        <h3 data-en="Graphic Design" data-bn="গ্রাফিক ডিজাইন">Graphic Design</h3>
+        <p data-en="Creative visual design solutions for your brand identity and digital presence." data-bn="আপনার ব্র্যান্ড আইডেন্টিটি এবং ডিজিটাল উপস্থিতির জন্য ক্রিয়েটিভ ডিজাইন সমাধান।">Creative visual design solutions for your brand identity and digital presence.</p>
+        <ul class="service-list">
+          <li data-en="Logo Design" data-bn="লোগো ডিজাইন">Logo Design</li>
+          <li data-en="Banner Design" data-bn="ব্যানার ডিজাইন">Banner Design</li>
+          <li data-en="Social Media Post Design" data-bn="সোশ্যাল মিডিয়া পোস্ট ডিজাইন">Social Media Post Design</li>
+          <li data-en="Business Card Design" data-bn="বিজনেস কার্ড ডিজাইন">Business Card Design</li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="max-w">
+    <div class="section-label reveal" data-en="My Work" data-bn="আমার কাজ">My Work</div>
+    <h2 class="section-title reveal" data-en="Featured Projects" data-bn="উল্লেখযোগ্য প্রজেক্টসমূহ">Featured Projects</h2>
+    <p class="section-sub reveal" data-en="A curated selection of projects I've built — ranging from e-commerce platforms to management systems." data-bn="আমার তৈরি প্রজেক্টের একটি নির্বাচিত সংগ্রহ — ই-কমার্স প্ল্যাটফর্ম থেকে ম্যানেজমেন্ট সিস্টেম পর্যন্ত।">A curated selection of projects I've built — ranging from e-commerce platforms to management systems.</p>
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" onclick="filterProjects('all')"><span data-en="All" data-bn="সব">All</span></button>
+      <button class="filter-btn" onclick="filterProjects('design')"><span data-en="Design" data-bn="ডিজাইন">Design</span></button>
+      <button class="filter-btn" onclick="filterProjects('web')"><span data-en="Web Development" data-bn="ওয়েব ডেভেলপমেন্ট">Web Development</span></button>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Projects injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="max-w">
+    <div class="section-label reveal" data-en="My Journey" data-bn="আমার যাত্রা">My Journey</div>
+    <h2 class="section-title reveal" data-en="Experience Timeline" data-bn="অভিজ্ঞতার টাইমলাইন">Experience Timeline</h2>
+    <p class="section-sub reveal" data-en="Milestones that shaped my career path." data-bn="যে মাইলফলকগুলো আমার ক্যারিয়ার পথ গঠন করেছে।">Milestones that shaped my career path.</p>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dot"><i class="fas fa-users"></i></div>
+        <div class="tl-content">
+          <div class="tl-year">2026</div>
+          <h4 data-en="Organization Management Website" data-bn="সংগঠন ব্যবস্থাপনা ওয়েবসাইট">Organization Management Website</h4>
+          <p data-en="Built the official website for Ash-Siratol Mustakim Songothon with member management and event features." data-bn="আশ-সিরাতুল মুস্তাকিম সংগঠনের জন্য সদস্য ব্যবস্থাপনা এবং ইভেন্ট ফিচার সহ অফিসিয়াল ওয়েবসাইট তৈরি করেছি।">Built the official website for Ash-Siratol Mustakim Songothon with member management and event features.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot" style="border-color:var(--accent2);color:var(--accent2)"><i class="fas fa-shopping-cart"></i></div>
+        <div class="tl-content">
+          <div class="tl-year" style="color:var(--accent2)">2025</div>
+          <h4 data-en="Heaven's Group E-Commerce Website" data-bn="হেভেন্স গ্রুপ ই-কমার্স ওয়েবসাইট">E-Commerce Website</h4>
+          <p data-en="Built a full-featured e-commerce platform with ASP.NET Core, featuring product management, cart system, and admin panel." data-bn="ASP.NET Core দিয়ে একটি ফুল-ফিচার্ড ই-কমার্স প্ল্যাটফর্ম তৈরি করেছি, পণ্য ব্যবস্থাপনা, কার্ট সিস্টেম এবং অ্যাডমিন প্যানেল সহ।">Built a full-featured e-commerce platform with ASP.NET Core, featuring product management, cart system, and admin panel.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot" style="border-color:var(--accent3);color:var(--accent3)"><i class="fas fa-mobile-alt"></i></div>
+        <div class="tl-content">
+          <div class="tl-year" style="color:var(--accent3)">2025</div>
+          <h4 data-en="Mobile Shop Management System" data-bn="মোবাইল শপ ম্যানেজমেন্ট সিস্টেম">Mobile Shop Management System</h4>
+          <p data-en="Developed a comprehensive inventory and sales management system for a mobile shop using ASP.NET Core and SQL Server." data-bn="ASP.NET Core এবং SQL Server ব্যবহার করে একটি মোবাইল শপের জন্য ইনভেন্টরি ও বিক্রয় ব্যবস্থাপনা সিস্টেম তৈরি করেছি।">Developed a comprehensive inventory and sales management system for a mobile shop using ASP.NET Core and SQL Server.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"><i class="fas fa-briefcase"></i></div>
+        <div class="tl-content">
+          <div class="tl-year">2023</div>
+          <h4 data-en="Heavens Group — Graphic Designer" data-bn="হেভেন্স গ্রুপ — গ্রাফিক ডিজাইনার">Graphic Designer</h4>
+          <p data-en="Worked as a Graphic Designer handling logo, banner, social media content, and branding for the company." data-bn="কোম্পানির লোগো, ব্যানার, সোশ্যাল মিডিয়া কন্টেন্ট ও ব্র্যান্ডিং পরিচালনায় গ্রাফিক ডিজাইনার হিসেবে কাজ করেছি।">Worked as a Graphic Designer handling logo, banner, social media content, and branding for the company.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="max-w">
+    <div class="section-label reveal" data-en="Get In Touch" data-bn="যোগাযোগ করুন">Get In Touch</div>
+    <h2 class="section-title reveal" data-en="Let's Work Together" data-bn="একসাথে কাজ করি">Let's Work Together</h2>
+    <p class="section-sub reveal" data-en="Have a project in mind? Let's connect and make something great." data-bn="কোনো প্রজেক্ট আছে? যোগাযোগ করুন এবং দুর্দান্ত কিছু তৈরি করি।">Have a project in mind? Let's connect and make something great.</p>
+    <div class="contact-wrapper">
+      <div class="contact-info reveal">
+        <a class="contact-item" href="tel:+8801XXXXXXXXX">
+          <div class="contact-icon ci-phone"><i class="fas fa-phone"></i></div>
+          <div><span class="contact-label" data-en="Phone" data-bn="ফোন">Phone</span><span class="contact-value">+880 1836-516100</span></div>
+        </a>
+        <a class="contact-item" href="mailto:abdullaalkayes@gmail.com">
+          <div class="contact-icon ci-email"><i class="fas fa-envelope"></i></div>
+          <div><span class="contact-label">Email</span><span class="contact-value">abdullaalkayes@gmail.com</span></div>
+        </a>
+        <a class="contact-item" href="https://wa.me/8801836516100" target="_blank">
+          <div class="contact-icon ci-whatsapp"><i class="fab fa-whatsapp"></i></div>
+          <div><span class="contact-label">WhatsApp</span><span class="contact-value">+880 1836-516100</span></div>
+        </a>
+        <a class="contact-item" href="https://facebook.com/" target="_blank">
+          <div class="contact-icon ci-facebook"><i class="fab fa-facebook-f"></i></div>
+          <div><span class="contact-label">Facebook</span><span class="contact-value">Abdulla Al Kayes</span></div>
+        </a>
+        <a class="contact-item" href="https://linkedin.com/in/abdulla-al-kayes" target="_blank">
+          <div class="contact-icon ci-linkedin"><i class="fab fa-linkedin-in"></i></div>
+          <div><span class="contact-label">LinkedIn</span><span class="contact-value">abdulla-al-kayes</span></div>
+        </a>
+        <a class="contact-item" href="https://github.com/" target="_blank">
+          <div class="contact-icon ci-github"><i class="fab fa-github"></i></div>
+          <div><span class="contact-label">GitHub</span><span class="contact-value">abdullaalkayes</span></div>
+        </a>
+      </div>
+      <div class="reveal">
+        <div class="contact-form">
+          <div class="form-group">
+            <label data-en="Your Name" data-bn="আপনার নাম">Your Name</label>
+            <input type="text" id="formName" placeholder="Karim Ahmed">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="formEmail" placeholder="karim@example.com">
+          </div>
+          <div class="form-group">
+            <label data-en="Message" data-bn="বার্তা">Message</label>
+            <textarea id="formMessage" rows="5" placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button class="form-submit" onclick="sendMessage()">
+            <i class="fas fa-paper-plane"></i>
+            <span data-en="Send Message" data-bn="বার্তা পাঠান">Send Message</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><span class="foot-accent">Abdulla Al Kayes</span> 2026 · <span style="color:var(--accent3)">♥</span></p>
+  <p style="margin-top:0.5rem;font-size:0.8rem" data-en="ASP.NET Developer · Full Stack Developer · Graphic Designer" data-bn="এএসপি.নেট ডেভেলপার · ফুল স্ট্যাক ডেভেলপার · গ্রাফিক ডিজাইনার">ASP.NET Developer · Full Stack Developer · Graphic Designer</p>
+</footer>
+
+<!-- ADMIN MODAL -->
+<div class="modal-overlay" id="adminModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">⚙ <span data-en="Admin Panel" data-bn="অ্যাডমিন প্যানেল">Admin Panel</span></div>
+      <button class="modal-close" onclick="closeAdmin()">✕</button>
+    </div>
+    <div class="admin-tabs">
+      <button class="atab active" onclick="switchAdmin('projects')"><i class="fas fa-code"></i> <span data-en="Projects" data-bn="প্রজেক্ট">Projects</span></button>
+      <button class="atab" onclick="switchAdmin('skills')"><i class="fas fa-star"></i> <span data-en="Skills" data-bn="দক্ষতা">Skills</span></button>
+      <button class="atab" onclick="switchAdmin('messages')"><i class="fas fa-envelope"></i> <span data-en="Messages" data-bn="বার্তাসমূহ">Messages</span></button>
+    </div>
+    <div class="admin-panel active" id="admin-projects">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th data-en="Project Name" data-bn="প্রজেক্টের নাম">Project Name</th>
+            <th data-en="Category" data-bn="ক্যাটাগরি">Category</th>
+            <th data-en="Tech Stack" data-bn="প্রযুক্তি">Tech Stack</th>
+            <th data-en="Status" data-bn="অবস্থা">Status</th>
+            <th data-en="Actions" data-bn="অ্যাকশন">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="adminProjectTable"></tbody>
+      </table>
+    </div>
+    <div class="admin-panel" id="admin-skills">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th data-en="Skill Name" data-bn="দক্ষতার নাম">Skill Name</th>
+            <th data-en="Category" data-bn="ক্যাটাগরি">Category</th>
+            <th data-en="Level" data-bn="স্তর">Level</th>
+            <th data-en="Actions" data-bn="অ্যাকশন">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="adminSkillTable"></tbody>
+      </table>
+    </div>
+    <div class="admin-panel" id="admin-messages">
+      <div id="adminMessages"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
+
+<script>
+// ── DATA ──
+const projects = [
+  {id:1,name:"Heaven's Group E-Commerce",cat:"web",emoji:"🛒",desc:"A full-featured e-commerce platform with product catalog, cart, checkout, and admin panel built with ASP.NET Core.",descBn:"ASP.NET Core দিয়ে তৈরি পণ্য ক্যাটালগ, কার্ট, চেকআউট এবং অ্যাডমিন প্যানেল সহ ফুল-ফিচার্ড ই-কমার্স প্ল্যাটফর্ম।",tags:["HTML","CSS","JavaScript","ASP.NET Core","SQL Server"],bg:"linear-gradient(135deg,#0a0a1f 0%,#1a0a3f 100%)",github:"#",demo:"#",status:"Live"},
+  {id:2,name:"Mobile Shop Management System",cat:"web",emoji:"📱",desc:"Comprehensive inventory and sales management system for a mobile shop with real-time reporting and EF Core integration.",descBn:"রিয়েল-টাইম রিপোর্টিং এবং EF Core ইন্টিগ্রেশন সহ মোবাইল শপের জন্য ব্যাপক ইনভেন্টরি ও বিক্রয় ব্যবস্থাপনা সিস্টেম।",tags:["ASP.NET Core","SQL Server","EF Core","Bootstrap"],bg:"linear-gradient(135deg,#0a1f0a 0%,#0a3f1a 100%)",github:"#",demo:"#",status:"Live"},
+  {id:3,name:"Ash-Siratol Mustakim Website",cat:"web",emoji:"🕌",desc:"Official organization website with member management, event scheduling, and news publishing features.",descBn:"সদস্য ব্যবস্থাপনা, ইভেন্ট শিডিউলিং এবং নিউজ পাবলিশিং ফিচার সহ অফিসিয়াল সংগঠন ওয়েবসাইট।",tags:["HTML","CSS","JavaScript","ASP.NET Core"],bg:"linear-gradient(135deg,#1f0a0a 0%,#3f1a0a 100%)",github:"#",demo:"#",status:"Live"},
+  {id:4,name:"Heaven's Group Brand Identity",cat:"design",emoji:"🎨",desc:"Complete brand identity design including logo, color palette, typography, business cards, and brand guidelines.",descBn:"লোগো, কালার প্যালেট, টাইপোগ্রাফি, বিজনেস কার্ড এবং ব্র্যান্ড গাইডলাইন সহ সম্পূর্ণ ব্র্যান্ড আইডেন্টিটি ডিজাইন।",tags:["Adobe Illustrator","Photoshop","Branding","Logo"],bg:"linear-gradient(135deg,#0a0f1f 0%,#0a1f3f 100%)",github:"#",demo:"#",status:"Completed"},
+  {id:5,name:"Social Media Design Pack",cat:"design",emoji:"📸",desc:"A comprehensive set of social media post templates for Facebook, Instagram, and LinkedIn for various brands.",descBn:"বিভিন্ন ব্র্যান্ডের জন্য ফেসবুক, ইনস্টাগ্রাম এবং লিংকডইনের জন্য সোশ্যাল মিডিয়া পোস্ট টেমপ্লেটের একটি ব্যাপক সেট।",tags:["Photoshop","Illustrator","Social Media"],bg:"linear-gradient(135deg,#1a0a2a 0%,#2a0a4a 100%)",github:"#",demo:"#",status:"Completed"},
+  {id:6,name:"Portfolio Website",cat:"web",emoji:"💼",desc:"This very portfolio — built with pure HTML, CSS, and vanilla JavaScript with dark/light mode and bilingual support.",descBn:"এই পোর্টফোলিও — পিউর HTML, CSS এবং ভ্যানিলা JavaScript দিয়ে ডার্ক/লাইট মোড এবং দ্বিভাষিক সাপোর্ট সহ তৈরি।",tags:["HTML","CSS","JavaScript"],bg:"linear-gradient(135deg,#001a1a 0%,#003a3a 100%)",github:"#",demo:"#",status:"Live"},
+];
+
+const skillsData = [
+  {name:"Adobe Photoshop",cat:"Design",level:90},
+  {name:"Adobe Illustrator",cat:"Design",level:85},
+  {name:"Logo Design",cat:"Design",level:88},
+  {name:"Social Media Design",cat:"Design",level:92},
+  {name:"HTML5",cat:"Development",level:95},
+  {name:"CSS3",cat:"Development",level:90},
+  {name:"JavaScript",cat:"Development",level:78},
+  {name:"ASP.NET Core",cat:"Development",level:80},
+  {name:"SQL Server",cat:"Development",level:75},
+];
+
+const messages = [
+  {name:"Rahim Khan",email:"rahim@gmail.com",msg:"I need a logo design for my new business. Can we connect?",time:"2026-06-01"},
+  {name:"Fatema Begum",email:"fatema@yahoo.com",msg:"Looking for an ASP.NET developer for an e-commerce project.",time:"2026-06-03"},
+  {name:"Karim Uddin",email:"karim@outlook.com",msg:"Saw your portfolio — very impressive! Can we discuss a management system?",time:"2026-06-05"},
+];
+
+// ── RENDER PROJECTS ──
+function renderProjects(filter='all'){
+  const grid = document.getElementById('projectsGrid');
+  grid.innerHTML='';
+  const filtered = filter==='all' ? projects : projects.filter(p=>p.cat===filter);
+  filtered.forEach(p=>{
+    const lang = document.documentElement.getAttribute('data-lang');
+    const desc = lang==='bn' ? p.descBn : p.desc;
+    grid.innerHTML+=`
+    <div class="project-card reveal" data-cat="${p.cat}">
+      <div class="project-thumb" style="background:${p.bg}">${p.emoji}</div>
+      <div class="project-body">
+        <h3>${p.name}</h3>
+        <p>${desc}</p>
+        <div class="project-tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <div class="project-links">
+          <a href="${p.github}" class="proj-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          <a href="${p.demo}" class="proj-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+        </div>
+      </div>
+    </div>`;
+  });
+  observeReveal();
+}
+
+function filterProjects(cat){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  event.target.closest('.filter-btn').classList.add('active');
+  renderProjects(cat);
+}
+
+// ── ADMIN ──
+function openAdmin(){document.getElementById('adminModal').classList.add('open');renderAdmin();}
+function closeAdmin(){document.getElementById('adminModal').classList.remove('open')}
+function switchAdmin(tab){
+  document.querySelectorAll('.atab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
+  event.target.closest('.atab').classList.add('active');
+  document.getElementById('admin-'+tab).classList.add('active');
+}
+function renderAdmin(){
+  // Projects
+  let ph='';
+  projects.forEach((p,i)=>{
+    ph+=`<tr>
+      <td>${i+1}</td>
+      <td><strong>${p.name}</strong></td>
+      <td><span class="badge ${p.cat==='web'?'badge-purple':'badge-green'}">${p.cat}</span></td>
+      <td style="color:var(--text2);font-size:0.82rem">${p.tags.slice(0,3).join(', ')}</td>
+      <td><span class="badge badge-green">${p.status}</span></td>
+      <td><div class="action-btns">
+        <button class="act-btn act-edit" onclick="showToast('প্রজেক্ট এডিট করুন: ${p.name}')">Edit</button>
+        <button class="act-btn act-del" onclick="showToast('প্রজেক্ট ডিলিট: ${p.name}')">Delete</button>
+      </div></td>
+    </tr>`;
+  });
+  document.getElementById('adminProjectTable').innerHTML=ph;
+  // Skills
+  let sh='';
+  skillsData.forEach((s,i)=>{
+    sh+=`<tr>
+      <td>${i+1}</td>
+      <td><strong>${s.name}</strong></td>
+      <td><span class="badge ${s.cat==='Design'?'badge-green':'badge-purple'}">${s.cat}</span></td>
+      <td><div style="display:flex;align-items:center;gap:8px"><div style="flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden"><div style="width:${s.level}%;height:100%;background:var(--accent);border-radius:3px"></div></div><span style="font-size:0.8rem;color:var(--text2)">${s.level}%</span></div></td>
+      <td><div class="action-btns">
+        <button class="act-btn act-edit" onclick="showToast('দক্ষতা এডিট: ${s.name}')">Edit</button>
+        <button class="act-btn act-del" onclick="showToast('দক্ষতা ডিলিট: ${s.name}')">Delete</button>
+      </div></td>
+    </tr>`;
+  });
+  document.getElementById('adminSkillTable').innerHTML=sh;
+  // Messages
+  let mh='';
+  messages.forEach(m=>{
+    mh+=`<div class="msg-card">
+      <div class="msg-meta"><span class="msg-sender">${m.name}</span><span class="msg-time">${m.time}</span></div>
+      <div class="msg-email"><i class="fas fa-envelope" style="color:var(--accent3);font-size:0.75rem"></i> ${m.email}</div>
+      <div class="msg-body">${m.msg}</div>
+    </div>`;
+  });
+  document.getElementById('adminMessages').innerHTML=mh;
+}
+
+// ── SKILLS TAB ──
+function switchSkill(tab){
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.skills-panel').forEach(p=>p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('panel-'+tab).classList.add('active');
+  setTimeout(animateBars,100);
+}
+
+// ── STATS COUNTER ──
+function animateCount(){
+  document.querySelectorAll('.stat-num[data-target]').forEach(el=>{
+    const target=+el.getAttribute('data-target');
+    let cur=0;const step=target/60;
+    const t=setInterval(()=>{
+      cur+=step;if(cur>=target){el.textContent=target+'+';clearInterval(t);}
+      else el.textContent=Math.floor(cur)+'+';
+    },25);
+    el.removeAttribute('data-target');
+  });
+}
+
+// ── SKILL BARS ──
+function animateBars(){
+  document.querySelectorAll('.skill-bar[data-w]').forEach(bar=>{
+    bar.style.width=bar.getAttribute('data-w')+'%';
+  });
+}
+
+// ── REVEAL ──
+function observeReveal(){
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        if(e.target.closest('#stats')) animateCount();
+        if(e.target.closest('#skills')) setTimeout(animateBars,300);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+// ── THEME ──
+function toggleTheme(){
+  const h=document.documentElement;
+  const isLight=h.getAttribute('data-theme')==='light';
+  h.setAttribute('data-theme',isLight?'dark':'light');
+  document.getElementById('themeToggle').textContent=isLight?'☀ Light':'🌙 Dark';
+}
+
+// ── LANGUAGE ──
+let currentLang='en';
+function toggleLang(){
+  currentLang=currentLang==='en'?'bn':'en';
+  document.documentElement.setAttribute('data-lang',currentLang);
+  document.getElementById('langToggle').textContent=currentLang==='en'?'বাংলা':'English';
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    el.textContent=el.getAttribute('data-'+currentLang);
+  });
+  renderProjects();
+}
+
+// ── MOBILE MENU ──
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+
+// ── CONTACT FORM ──
+function sendMessage(){
+  const n=document.getElementById('formName').value;
+  const e=document.getElementById('formEmail').value;
+  const m=document.getElementById('formMessage').value;
+  if(!n||!e||!m){showToast('সব ফিল্ড পূরণ করুন!');return}
+  messages.unshift({name:n,email:e,msg:m,time:new Date().toISOString().split('T')[0]});
+  document.getElementById('formName').value='';
+  document.getElementById('formEmail').value='';
+  document.getElementById('formMessage').value='';
+  showToast('বার্তা সফলভাবে পাঠানো হয়েছে! ✓');
+}
+
+// ── TOAST ──
+let toastTimer;
+function showToast(msg){
+  clearTimeout(toastTimer);
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');
+  toastTimer=setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+// ── INIT ──
+renderProjects();
+observeReveal();
+setTimeout(animateBars,500);
+</script>
+</body>
+</html>
