@@ -1070,9 +1070,9 @@ footer .foot-accent{color:var(--accent);font-weight:600}
           <div class="contact-icon ci-phone"><i class="fas fa-phone"></i></div>
           <div><span class="contact-label" data-en="Phone" data-bn="ফোন">Phone</span><span class="contact-value">+880 1836-516100</span></div>
         </a> -->
-        <a class="contact-item" href="mailto:abdullaalkayes@gmail.com">
+        <a class="contact-item" href="mailto:abdullahalkayes59@gmail.com">
           <div class="contact-icon ci-email"><i class="fas fa-envelope"></i></div>
-          <div><span class="contact-label">Email</span><span class="contact-value">abdullaalkayes@gmail.com</span></div>
+          <div><span class="contact-label">Email</span><span class="contact-value">abdullahalkayes59@gmail.com</span></div>
         </a>
         <a class="contact-item" href="https://wa.me/8801836516100" target="_blank">
           <div class="contact-icon ci-whatsapp"><i class="fab fa-whatsapp"></i></div>
@@ -1091,26 +1091,35 @@ footer .foot-accent{color:var(--accent);font-weight:600}
           <div><span class="contact-label">GitHub</span><span class="contact-value">abdullaalkayes</span></div>
         </a> -->
       </div>
-      <div class="reveal">
-        <div class="contact-form">
-          <div class="form-group">
-            <label data-en="Your Name" data-bn="আপনার নাম">Your Name</label>
-            <input type="text" id="formName" placeholder="Karim Ahmed">
+      <form action="sendmail.php" method="POST">
+
+          <div class="reveal">
+            <div class="contact-form">
+
+              <div class="form-group">
+                <label data-en="Your Name">Your Name</label>
+                <input type="text" name="name" id="formName" placeholder="Karim Ahmed" required>
+              </div>
+
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" id="formEmail" placeholder="karim@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label data-en="Message">Message</label>
+                <textarea name="message" id="formMessage" rows="5" placeholder="Tell me about your project..." required></textarea>
+              </div>
+
+              <button class="form-submit" type="submit">
+                <i class="fas fa-paper-plane"></i>
+                <span data-en="Send Message">Send Message</span>
+              </button>
+
+            </div>
           </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" id="formEmail" placeholder="karim@example.com">
-          </div>
-          <div class="form-group">
-            <label data-en="Message" data-bn="বার্তা">Message</label>
-            <textarea id="formMessage" rows="5" placeholder="Tell me about your project..."></textarea>
-          </div>
-          <button class="form-submit" onclick="sendMessage()">
-            <i class="fas fa-paper-plane"></i>
-            <span data-en="Send Message" data-bn="বার্তা পাঠান">Send Message</span>
-          </button>
-        </div>
-      </div>
+
+        </form>
     </div>
   </div>
 </section>
@@ -1172,6 +1181,7 @@ footer .foot-accent{color:var(--accent);font-weight:600}
 <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
 
 <script>
+
 // ── DATA ──
 const projects = [
   {id:1,name:"E-Commerce",cat:"web",emoji:"🛒",desc:"A full-featured e-commerce platform with product catalog, cart, checkout, and admin panel built with ASP.NET Core.",descBn:"ASP.NET Core দিয়ে তৈরি পণ্য ক্যাটালগ, কার্ট, চেকআউট এবং অ্যাডমিন প্যানেল সহ ফুল-ফিচার্ড ই-কমার্স প্ল্যাটফর্ম।",tags:["HTML","CSS","JavaScript","ASP.NET Core","SQL Server"],bg:"linear-gradient(135deg,#0a0a1f 0%,#1a0a3f 100%)",github:"#",demo:"#",status:"Live"},
@@ -1363,44 +1373,7 @@ function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('op
 //   document.getElementById('formMessage').value='';
 //   showToast('বার্তা সফলভাবে পাঠানো হয়েছে! ✓');
 // }
-function sendMessage() {
 
-  const n = document.getElementById('formName').value;
-  const e = document.getElementById('formEmail').value;
-  const m = document.getElementById('formMessage').value;
-
-  if(!n || !e || !m){
-    showToast('সব ফিল্ড পূরণ করুন!');
-    return;
-  }
-
-  const params = {
-    from_name: n,
-    from_email: e,
-    message: m
-  };
-
-  emailjs.send(
-    "YOUR_SERVICE_ID",
-    "YOUR_TEMPLATE_ID",
-    params
-  )
-  .then(function(){
-
-    document.getElementById('formName').value='';
-    document.getElementById('formEmail').value='';
-    document.getElementById('formMessage').value='';
-
-    showToast('বার্তা সফলভাবে পাঠানো হয়েছে! ✓');
-
-  })
-  .catch(function(error){
-
-    console.error(error);
-    showToast('বার্তা পাঠানো যায়নি!');
-
-  });
-}
 
 // ── TOAST ──
 let toastTimer;
@@ -1418,9 +1391,20 @@ observeReveal();
 setTimeout(animateBars,500);
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
+<!-- 
 <script>
 emailjs.init("YOUR_PUBLIC_KEY");
+</script> -->
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+
+  if (urlParams.get("status") === "success") {
+    alert("Message sent successfully!");
+  }
+
+  if (urlParams.get("status") === "error") {
+    alert("Message failed!");
+  }
 </script>
 </body>
 </html>
