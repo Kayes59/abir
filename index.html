@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abdulla Al Kayes — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"> -->
+ <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> -->
+   <!-- <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 :root {
@@ -43,7 +47,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  font-family:'DM Sans',sans-serif;
+   font-family: 'Inter', sans-serif;
   background:var(--bg);
   color:var(--text);
   line-height:1.7;
@@ -96,11 +100,11 @@ nav{
 }
 .nav-links a:hover{color:var(--text)}
 .nav-links a:hover::after{width:100%}
-.nav-controls{display:flex;gap:0.75rem;align-items:center}
+.nav-controls{display:flex;gap:0.4rem;align-items:center}
 .ctrl-btn{
   background:var(--surface);border:1px solid var(--border);
   color:var(--text2);cursor:pointer;
-  border-radius:8px;padding:6px 12px;
+  border-radius:8px;padding:5px 10px;
   font-size:0.8rem;font-weight:500;
   font-family:'DM Sans',sans-serif;
   transition:all var(--transition);
@@ -700,13 +704,28 @@ footer .foot-accent{color:var(--accent);font-weight:600}
     <li><a href="#timeline" data-en="Timeline" data-bn="টাইমলাইন">Timeline</a></li>
     <li><a href="#contact" data-en="Contact" data-bn="যোগাযোগ">Contact</a></li>
   </ul>
-  <div class="nav-controls">
+  <!-- <div class="nav-controls">
     <button class="ctrl-btn" id="langToggle" onclick="toggleLang()">বাংলা</button>
     <button class="ctrl-btn" id="themeToggle" onclick="toggleTheme()">☀ Light</button>
     <button class="ctrl-btn" onclick="openAdmin()">⚙ Admin</button>
     <button class="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
+  </div> -->
+  <!-- <button class="ctrl-btn" onclick="window.open('https://www.linkedin.com/in/abdulla-al-kayes', '_blank')">
+    <i class="fab fa-linkedin"></i> LinkedIn
+</button>
+<button class="ctrl-btn" onclick="window.open('https://github.com/your-username', '_blank')">
+    <i class="fab fa-github"></i> GitHub
+</button>
+<button class="ctrl-btn" id="themeToggle" onclick="toggleTheme()">
+    ☀ Light
+</button>
+</nav> -->
+<div class="nav-controls">
+    <button class="ctrl-btn" onclick="window.open('https://www.linkedin.com/in/abdulla-al-kayes', '_blank')"><i class="fab fa-linkedin"></i> LinkedIn</button>
+    <button class="ctrl-btn" onclick="window.open('https://github.com/your-username', '_blank')"><i class="fab fa-github"></i> GitHub</button>
+    <button class="ctrl-btn" id="themeToggle" onclick="toggleTheme()">☀ Light</button>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
@@ -736,7 +755,7 @@ footer .foot-accent{color:var(--accent);font-weight:600}
       <div class="hero-titles">
         <div class="hero-title-item"><span class="title-dot" style="background:var(--accent2)"></span><span data-en="ASP.NET Developer" data-bn="এএসপি.নেট ডেভেলপার">ASP.NET Developer</span></div>
         <div class="hero-title-item"><span class="title-dot" style="background:var(--accent3)"></span><span data-en="Full Stack Developer" data-bn="ফুল স্ট্যাক ডেভেলপার">Full Stack Developer</span></div>
-        <div class="hero-title-item"><span class="title-dot"></span><span data-en="Graphic Designer" data-bn="গ্রাফিক ডিজাইনার">Graphic Designer</span></div>
+        <!-- <div class="hero-title-item"><span class="title-dot"></span><span data-en="Graphic Designer" data-bn="গ্রাফিক ডিজাইনার">Graphic Designer</span></div> -->
       </div>
       <p class="hero-desc" data-en="I am Abdulla Al Kayes — a passionate Graphic Designer & ASP.NET Developer. I love creating modern web applications and creative design solutions that make an impact." data-bn="আমি আব্দুল্লাহ আল কায়েস। আমি একজন গ্রাফিক ডিজাইনার ও এএসপি.নেট ডেভেলপার। আধুনিক ওয়েব অ্যাপ্লিকেশন ও ক্রিয়েটিভ ডিজাইন সলিউশন তৈরিতে আগ্রহী।">I am Abdulla Al Kayes — a passionate Graphic Designer & ASP.NET Developer. I love creating modern web applications and creative design solutions that make an impact.</p>
       <div class="hero-btns">
@@ -746,7 +765,7 @@ footer .foot-accent{color:var(--accent);font-weight:600}
         <!-- <a href="Kayes.pdf" class="btn-outline" onclick="showToast('CV ডাউনলোড শুরু হচ্ছে...')" data-en="Download CV" data-bn="সিভি ডাউনলোড">
           <i class="fas fa-download"></i> Download CV
         </a> -->
-        <a href="Kayes.zip" download class="btn-outline"
+        <a href="Kayes.pdf" download class="btn-outline"
    onclick="showToast('CV ডাউনলোড শুরু হচ্ছে...')"
    data-en="Download CV" data-bn="সিভি ডাউনলোড">
   <i class="fas fa-download"></i> Download CV
@@ -851,22 +870,22 @@ footer .foot-accent{color:var(--accent);font-weight:600}
       <button class="stab" onclick="switchSkill('design')" data-en="Design Skills" data-bn="ডিজাইন দক্ষতা">Design Skills</button>
     </div>
     <div class="skills-panel" id="panel-design">
-      <div class="skill-card reveal"><div class="skill-icon">🎨</div><div class="skill-name">Adobe Photoshop</div><div class="skill-level"><div class="skill-bar" data-w="90"></div></div></div>
-      <div class="skill-card reveal"><div class="skill-icon">✏️</div><div class="skill-name">Adobe Illustrator</div><div class="skill-level"><div class="skill-bar" data-w="85"></div></div></div>
-      <div class="skill-card reveal"><div class="skill-icon">🏷️</div><div class="skill-name">Logo Design</div><div class="skill-level"><div class="skill-bar" data-w="88"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🎨</div><div class="skill-name">Adobe Photoshop</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">✏️</div><div class="skill-name">Adobe Illustrator</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
+      <!-- <div class="skill-card reveal"><div class="skill-icon">🏷️</div><div class="skill-name">Logo Design</div><div class="skill-level"><div class="skill-bar" data-w="88"></div></div></div>
       <div class="skill-card reveal"><div class="skill-icon">📱</div><div class="skill-name">Social Media Design</div><div class="skill-level"><div class="skill-bar" data-w="92"></div></div></div>
-      <div class="skill-card reveal"><div class="skill-icon">🌟</div><div class="skill-name">Branding</div><div class="skill-level"><div class="skill-bar" data-w="80"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🌟</div><div class="skill-name">Branding</div><div class="skill-level"><div class="skill-bar" data-w="80"></div></div></div> -->
     </div>
     <div class="skills-panel active" id="panel-dev">
-      <div class="skill-card reveal"><div class="skill-icon">🌐</div><div class="skill-name">HTML5</div><div class="skill-level"><div class="skill-bar" data-w="95"></div></div></div>
-      <div class="skill-card reveal"><div class="skill-icon">🎨</div><div class="skill-name">CSS3</div><div class="skill-level"><div class="skill-bar" data-w="90"></div></div></div>
-      <div class="skill-card reveal"><div class="skill-icon">⚡</div><div class="skill-name">JavaScript</div><div class="skill-level"><div class="skill-bar" data-w="78"></div></div></div>
-      <div class="skill-card reveal"><div class="skill-icon">🅱️</div><div class="skill-name">Bootstrap</div><div class="skill-level"><div class="skill-bar" data-w="88"></div></div></div>
-      <div class="skill-card reveal"><div class="skill-icon">⚙️</div><div class="skill-name">C#</div><div class="skill-level"><div class="skill-bar" data-w="82"></div></div></div>
-      <div class="skill-card reveal"><div class="skill-icon">🔷</div><div class="skill-name">ASP.NET Core</div><div class="skill-level"><div class="skill-bar" data-w="80"></div></div></div>
-      <div class="skill-card reveal"><div class="skill-icon">🗄️</div><div class="skill-name">SQL Server</div><div class="skill-level"><div class="skill-bar" data-w="75"></div></div></div>
-      <div class="skill-card reveal"><div class="skill-icon">🔗</div><div class="skill-name">Entity Framework</div><div class="skill-level"><div class="skill-bar" data-w="76"></div></div></div>
-      <div class="skill-card reveal"><div class="skill-icon">🐙</div><div class="skill-name">Git & GitHub</div><div class="skill-level"><div class="skill-bar" data-w="84"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🌐</div><div class="skill-name">HTML</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🎨</div><div class="skill-name">CSS</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">⚡</div><div class="skill-name">JavaScript</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🅱️</div><div class="skill-name">Bootstrap</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">⚙️</div><div class="skill-name">C#</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🔷</div><div class="skill-name">ASP.NET Core</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🗄️</div><div class="skill-name">SQL Server</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🔗</div><div class="skill-name">Entity Framework</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🐙</div><div class="skill-name">Git & GitHub</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
     </div>
   </div>
 </section>
@@ -880,7 +899,7 @@ footer .foot-accent{color:var(--accent);font-weight:600}
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-icon icon-purple"><i class="fas fa-code"></i></div>
-        <h3 data-en="Web Development" data-bn="ওয়েব ডেভেলপমেন্ট">Web Development</h3>
+        <h3 data-en="Web Development" data-bn="ওয়েব ডেভেলপমেন্ট">Website Development</h3>
         <p data-en="Full-stack web applications built with modern technologies and best practices." data-bn="আধুনিক প্রযুক্তি ব্যবহার করে তৈরি ফুল-স্ট্যাক ওয়েব অ্যাপ্লিকেশন।">Full-stack web applications built with modern technologies and best practices.</p>
         <ul class="service-list">
           <li data-en="Portfolio Website" data-bn="পোর্টফোলিও ওয়েবসাইট">Portfolio Website</li>
@@ -891,26 +910,79 @@ footer .foot-accent{color:var(--accent);font-weight:600}
       </div>
       <div class="service-card reveal">
         <div class="service-icon icon-red"><i class="fas fa-database"></i></div>
-        <h3 data-en="Database & Backend" data-bn="ডেটাবেজ ও ব্যাকএন্ড">Database & Backend</h3>
+        <h3 data-en="Database & Backend" data-bn="ডেটাবেজ ও ব্যাকএন্ড">Software Development</h3>
         <p data-en="Robust backend systems with clean architecture and optimized database design." data-bn="ক্লিন আর্কিটেকচার এবং অপটিমাইজড ডেটাবেজ ডিজাইন সহ শক্তিশালী ব্যাকএন্ড সিস্টেম।">Robust backend systems with clean architecture and optimized database design.</p>
         <ul class="service-list">
+          <li data-en="Backend Development" data-bn="ব্যাকএন্ড ডেভেলপমেন্ট">Backend Development</li>
           <li data-en="SQL Server Database Design" data-bn="SQL সার্ভার ডেটাবেজ ডিজাইন">SQL Server Database Design</li>
-          <li data-en="REST API Development" data-bn="REST API ডেভেলপমেন্ট">REST API Development</li>
+          <!-- <li data-en="REST API Development" data-bn="REST API ডেভেলপমেন্ট">REST API Development</li> -->
           <li data-en="Admin Panel Development" data-bn="অ্যাডমিন প্যানেল ডেভেলপমেন্ট">Admin Panel Development</li>
           <li data-en="EF Core Integration" data-bn="EF Core ইন্টিগ্রেশন">EF Core Integration</li>
         </ul>
       </div>
       <div class="service-card reveal">
-        <div class="service-icon icon-green"><i class="fas fa-palette"></i></div>
-        <h3 data-en="Graphic Design" data-bn="গ্রাফিক ডিজাইন">Graphic Design</h3>
-        <p data-en="Creative visual design solutions for your brand identity and digital presence." data-bn="আপনার ব্র্যান্ড আইডেন্টিটি এবং ডিজিটাল উপস্থিতির জন্য ক্রিয়েটিভ ডিজাইন সমাধান।">Creative visual design solutions for your brand identity and digital presence.</p>
-        <ul class="service-list">
-          <li data-en="Logo Design" data-bn="লোগো ডিজাইন">Logo Design</li>
-          <li data-en="Banner Design" data-bn="ব্যানার ডিজাইন">Banner Design</li>
-          <li data-en="Social Media Post Design" data-bn="সোশ্যাল মিডিয়া পোস্ট ডিজাইন">Social Media Post Design</li>
-          <li data-en="Business Card Design" data-bn="বিজনেস কার্ড ডিজাইন">Business Card Design</li>
-        </ul>
-      </div>
+    <div class="service-icon icon-green">
+        <i class="fas fa-code"></i>
+    </div>
+
+    <h3 data-en="API Development" data-bn="API ডেভেলপমেন্ট">
+        API Development
+    </h3>
+
+    <p data-en="We build secure, scalable and high-performance RESTful APIs for web and mobile applications."
+       data-bn="আমরা ওয়েব ও মোবাইল অ্যাপের জন্য সিকিউর, স্কেলেবল এবং হাই পারফরম্যান্স API তৈরি করি।">
+       We build secure, scalable and high-performance RESTful APIs for web and mobile applications.
+    </p>
+
+    <ul class="service-list">
+        <li data-en="REST API Development" data-bn="REST API ডেভেলপমেন্ট">REST API Development</li>
+        <li data-en="Authentication (JWT, OAuth)" data-bn="অথেন্টিকেশন (JWT, OAuth)">Authentication (JWT, OAuth)</li>
+        <li data-en="Database Integration" data-bn="ডাটাবেজ ইন্টিগ্রেশন">Database Integration</li>
+        <li data-en="API Security & Optimization" data-bn="API সিকিউরিটি ও অপটিমাইজেশন">API Security & Optimization</li>
+    </ul>
+</div>
+<div class="service-card reveal">
+    <div class="service-icon icon-blue">
+        <i class="fas fa-cloud"></i>
+    </div>
+
+    <h3 data-en="SaaS Product Development" data-bn="SaaS প্রোডাক্ট ডেভেলপমেন্ট">
+        SaaS Product
+    </h3>
+
+    <p data-en="We design and develop scalable SaaS platforms with modern architecture, multi-user systems, and cloud integration."
+       data-bn="আমরা স্কেলেবল SaaS প্ল্যাটফর্ম তৈরি করি যেখানে থাকে মাল্টি-ইউজার সিস্টেম, ক্লাউড ইন্টিগ্রেশন এবং আধুনিক আর্কিটেকচার।">
+       We design and develop scalable SaaS platforms with modern architecture, multi-user systems, and cloud integration.
+    </p>
+
+    <ul class="service-list">
+        <li data-en="Multi-Tenant System" data-bn="মাল্টি-টেন্যান্ট সিস্টেম">Multi-Tenant System</li>
+        <li data-en="Subscription & Payment System" data-bn="সাবস্ক্রিপশন ও পেমেন্ট সিস্টেম">Subscription & Payment System</li>
+        <li data-en="Admin Dashboard" data-bn="অ্যাডমিন ড্যাশবোর্ড">Admin Dashboard</li>
+        <li data-en="Cloud Deployment" data-bn="ক্লাউড ডিপ্লয়মেন্ট">Cloud Deployment</li>
+    </ul>
+</div>
+<!-- <div class="service-card reveal">
+    <div class="service-icon icon-purple">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <h3 data-en="AI Solutions & Integration" data-bn="এআই সলিউশন ও ইন্টিগ্রেশন">
+        AI Solutions & Integration
+    </h3>
+
+    <p data-en="We build AI-powered features like chatbots, automation systems, and smart integrations for modern applications."
+       data-bn="আমরা AI ভিত্তিক চ্যাটবট, অটোমেশন সিস্টেম এবং স্মার্ট ইন্টিগ্রেশন তৈরি করি আধুনিক অ্যাপের জন্য।">
+       We build AI-powered features like chatbots, automation systems, and smart integrations for modern applications.
+    </p>
+
+    <ul class="service-list">
+        <li data-en="AI Chatbot Development" data-bn="এআই চ্যাটবট ডেভেলপমেন্ট">AI Chatbot Development</li>
+        <li data-en="Automation Systems" data-bn="অটোমেশন সিস্টেম">Automation Systems</li>
+        <li data-en="AI API Integration (OpenAI etc.)" data-bn="এআই API ইন্টিগ্রেশন (OpenAI ইত্যাদি)">AI API Integration (OpenAI etc.)</li>
+        <li data-en="Smart Recommendation System" data-bn="স্মার্ট রিকমেন্ডেশন সিস্টেম">Smart Recommendation System</li>
+    </ul>
+</div> -->
       
     </div>
   </div>
@@ -925,7 +997,7 @@ footer .foot-accent{color:var(--accent);font-weight:600}
     <div class="filter-bar reveal">
       <button class="filter-btn active" onclick="filterProjects('all')"><span data-en="All" data-bn="সব">All</span></button>
       <button class="filter-btn" onclick="filterProjects('design')"><span data-en="Design" data-bn="ডিজাইন">Design</span></button>
-      <button class="filter-btn" onclick="filterProjects('web')"><span data-en="Web Development" data-bn="ওয়েব ডেভেলপমেন্ট">Web Development</span></button>
+      <button class="filter-btn" onclick="filterProjects('web')"><span data-en="Web Development" data-bn="ওয়েব ডেভেলপমেন্ট">Website Development</span></button>
     </div>
     <div class="projects-grid" id="projectsGrid">
       <!-- Projects injected by JS -->
@@ -984,10 +1056,10 @@ footer .foot-accent{color:var(--accent);font-weight:600}
     <p class="section-sub reveal" data-en="Have a project in mind? Let's connect and make something great." data-bn="কোনো প্রজেক্ট আছে? যোগাযোগ করুন এবং দুর্দান্ত কিছু তৈরি করি।">Have a project in mind? Let's connect and make something great.</p>
     <div class="contact-wrapper">
       <div class="contact-info reveal">
-        <a class="contact-item" href="tel:+8801XXXXXXXXX">
+        <!-- <a class="contact-item" href="tel:+8801XXXXXXXXX">
           <div class="contact-icon ci-phone"><i class="fas fa-phone"></i></div>
           <div><span class="contact-label" data-en="Phone" data-bn="ফোন">Phone</span><span class="contact-value">+880 1836-516100</span></div>
-        </a>
+        </a> -->
         <a class="contact-item" href="mailto:abdullaalkayes@gmail.com">
           <div class="contact-icon ci-email"><i class="fas fa-envelope"></i></div>
           <div><span class="contact-label">Email</span><span class="contact-value">abdullaalkayes@gmail.com</span></div>
@@ -996,18 +1068,18 @@ footer .foot-accent{color:var(--accent);font-weight:600}
           <div class="contact-icon ci-whatsapp"><i class="fab fa-whatsapp"></i></div>
           <div><span class="contact-label">WhatsApp</span><span class="contact-value">+880 1836-516100</span></div>
         </a>
-        <a class="contact-item" href="https://facebook.com/" target="_blank">
+        <!-- <a class="contact-item" href="https://facebook.com/" target="_blank">
           <div class="contact-icon ci-facebook"><i class="fab fa-facebook-f"></i></div>
           <div><span class="contact-label">Facebook</span><span class="contact-value">Abdulla Al Kayes</span></div>
-        </a>
-        <a class="contact-item" href="https://linkedin.com/in/abdulla-al-kayes" target="_blank">
+        </a> -->
+        <!-- <a class="contact-item" href="https://linkedin.com/in/abdulla-al-kayes" target="_blank">
           <div class="contact-icon ci-linkedin"><i class="fab fa-linkedin-in"></i></div>
           <div><span class="contact-label">LinkedIn</span><span class="contact-value">abdulla-al-kayes</span></div>
         </a>
         <a class="contact-item" href="https://github.com/" target="_blank">
           <div class="contact-icon ci-github"><i class="fab fa-github"></i></div>
           <div><span class="contact-label">GitHub</span><span class="contact-value">abdullaalkayes</span></div>
-        </a>
+        </a> -->
       </div>
       <div class="reveal">
         <div class="contact-form">
@@ -1036,11 +1108,11 @@ footer .foot-accent{color:var(--accent);font-weight:600}
 <!-- FOOTER -->
 <footer>
   <p><span class="foot-accent">Abdulla Al Kayes</span> 2026 · <span style="color:var(--accent3)">♥</span></p>
-  <p style="margin-top:0.5rem;font-size:0.8rem" data-en="ASP.NET Developer · Full Stack Developer · Graphic Designer" data-bn="এএসপি.নেট ডেভেলপার · ফুল স্ট্যাক ডেভেলপার · গ্রাফিক ডিজাইনার">ASP.NET Developer · Full Stack Developer · Graphic Designer</p>
+  <p style="margin-top:0.5rem;font-size:0.8rem" data-en="ASP.NET Developer · Full Stack Developer" data-bn="এএসপি.নেট ডেভেলপার · ফুল স্ট্যাক ডেভেলপার">ASP.NET Developer · Full Stack Developer</p>
 </footer>
 
 <!-- ADMIN MODAL -->
-<div class="modal-overlay" id="adminModal">
+<!-- <div class="modal-overlay" id="adminModal">
   <div class="modal">
     <div class="modal-header">
       <div class="modal-title">⚙ <span data-en="Admin Panel" data-bn="অ্যাডমিন প্যানেল">Admin Panel</span></div>
@@ -1084,7 +1156,7 @@ footer .foot-accent{color:var(--accent);font-weight:600}
       <div id="adminMessages"></div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- TOAST -->
 <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
@@ -1092,10 +1164,10 @@ footer .foot-accent{color:var(--accent);font-weight:600}
 <script>
 // ── DATA ──
 const projects = [
-  {id:1,name:"Heaven's Group E-Commerce",cat:"web",emoji:"🛒",desc:"A full-featured e-commerce platform with product catalog, cart, checkout, and admin panel built with ASP.NET Core.",descBn:"ASP.NET Core দিয়ে তৈরি পণ্য ক্যাটালগ, কার্ট, চেকআউট এবং অ্যাডমিন প্যানেল সহ ফুল-ফিচার্ড ই-কমার্স প্ল্যাটফর্ম।",tags:["HTML","CSS","JavaScript","ASP.NET Core","SQL Server"],bg:"linear-gradient(135deg,#0a0a1f 0%,#1a0a3f 100%)",github:"#",demo:"#",status:"Live"},
+  {id:1,name:"E-Commerce",cat:"web",emoji:"🛒",desc:"A full-featured e-commerce platform with product catalog, cart, checkout, and admin panel built with ASP.NET Core.",descBn:"ASP.NET Core দিয়ে তৈরি পণ্য ক্যাটালগ, কার্ট, চেকআউট এবং অ্যাডমিন প্যানেল সহ ফুল-ফিচার্ড ই-কমার্স প্ল্যাটফর্ম।",tags:["HTML","CSS","JavaScript","ASP.NET Core","SQL Server"],bg:"linear-gradient(135deg,#0a0a1f 0%,#1a0a3f 100%)",github:"#",demo:"#",status:"Live"},
   {id:2,name:"Mobile Shop Management System",cat:"web",emoji:"📱",desc:"Comprehensive inventory and sales management system for a mobile shop with real-time reporting and EF Core integration.",descBn:"রিয়েল-টাইম রিপোর্টিং এবং EF Core ইন্টিগ্রেশন সহ মোবাইল শপের জন্য ব্যাপক ইনভেন্টরি ও বিক্রয় ব্যবস্থাপনা সিস্টেম।",tags:["ASP.NET Core","SQL Server","EF Core","Bootstrap"],bg:"linear-gradient(135deg,#0a1f0a 0%,#0a3f1a 100%)",github:"#",demo:"#",status:"Live"},
   {id:3,name:"Ash-Siratol Mustakim Website",cat:"web",emoji:"🕌",desc:"Official organization website with member management, event scheduling, and news publishing features.",descBn:"সদস্য ব্যবস্থাপনা, ইভেন্ট শিডিউলিং এবং নিউজ পাবলিশিং ফিচার সহ অফিসিয়াল সংগঠন ওয়েবসাইট।",tags:["HTML","CSS","JavaScript","ASP.NET Core"],bg:"linear-gradient(135deg,#1f0a0a 0%,#3f1a0a 100%)",github:"#",demo:"#",status:"Live"},
-  {id:4,name:"Heaven's Group Brand Identity",cat:"design",emoji:"🎨",desc:"Complete brand identity design including logo, color palette, typography, business cards, and brand guidelines.",descBn:"লোগো, কালার প্যালেট, টাইপোগ্রাফি, বিজনেস কার্ড এবং ব্র্যান্ড গাইডলাইন সহ সম্পূর্ণ ব্র্যান্ড আইডেন্টিটি ডিজাইন।",tags:["Adobe Illustrator","Photoshop","Branding","Logo"],bg:"linear-gradient(135deg,#0a0f1f 0%,#0a1f3f 100%)",github:"#",demo:"#",status:"Completed"},
+  {id:4,name:"Brand Identity",cat:"design",emoji:"🎨",desc:"Complete brand identity design including logo, color palette, typography, business cards, and brand guidelines.",descBn:"লোগো, কালার প্যালেট, টাইপোগ্রাফি, বিজনেস কার্ড এবং ব্র্যান্ড গাইডলাইন সহ সম্পূর্ণ ব্র্যান্ড আইডেন্টিটি ডিজাইন।",tags:["Adobe Illustrator","Photoshop","Branding","Logo"],bg:"linear-gradient(135deg,#0a0f1f 0%,#0a1f3f 100%)",github:"#",demo:"#",status:"Completed"},
   {id:5,name:"Social Media Design Pack",cat:"design",emoji:"📸",desc:"A comprehensive set of social media post templates for Facebook, Instagram, and LinkedIn for various brands.",descBn:"বিভিন্ন ব্র্যান্ডের জন্য ফেসবুক, ইনস্টাগ্রাম এবং লিংকডইনের জন্য সোশ্যাল মিডিয়া পোস্ট টেমপ্লেটের একটি ব্যাপক সেট।",tags:["Photoshop","Illustrator","Social Media"],bg:"linear-gradient(135deg,#1a0a2a 0%,#2a0a4a 100%)",github:"#",demo:"#",status:"Completed"},
   {id:6,name:"Portfolio Website",cat:"web",emoji:"💼",desc:"This very portfolio — built with pure HTML, CSS, and vanilla JavaScript with dark/light mode and bilingual support.",descBn:"এই পোর্টফোলিও — পিউর HTML, CSS এবং ভ্যানিলা JavaScript দিয়ে ডার্ক/লাইট মোড এবং দ্বিভাষিক সাপোর্ট সহ তৈরি।",tags:["HTML","CSS","JavaScript"],bg:"linear-gradient(135deg,#001a1a 0%,#003a3a 100%)",github:"#",demo:"#",status:"Live"},
 ];
@@ -1135,7 +1207,7 @@ function renderProjects(filter='all'){
         <div class="project-tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
         <div class="project-links">
           <a href="${p.github}" class="proj-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-          <a href="${p.demo}" class="proj-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          
         </div>
       </div>
     </div>`;
@@ -1270,16 +1342,54 @@ function toggleLang(){
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
 
 // ── CONTACT FORM ──
-function sendMessage(){
-  const n=document.getElementById('formName').value;
-  const e=document.getElementById('formEmail').value;
-  const m=document.getElementById('formMessage').value;
-  if(!n||!e||!m){showToast('সব ফিল্ড পূরণ করুন!');return}
-  messages.unshift({name:n,email:e,msg:m,time:new Date().toISOString().split('T')[0]});
-  document.getElementById('formName').value='';
-  document.getElementById('formEmail').value='';
-  document.getElementById('formMessage').value='';
-  showToast('বার্তা সফলভাবে পাঠানো হয়েছে! ✓');
+// function sendMessage(){
+//   const n=document.getElementById('formName').value;
+//   const e=document.getElementById('formEmail').value;
+//   const m=document.getElementById('formMessage').value;
+//   if(!n||!e||!m){showToast('সব ফিল্ড পূরণ করুন!');return}
+//   messages.unshift({name:n,email:e,msg:m,time:new Date().toISOString().split('T')[0]});
+//   document.getElementById('formName').value='';
+//   document.getElementById('formEmail').value='';
+//   document.getElementById('formMessage').value='';
+//   showToast('বার্তা সফলভাবে পাঠানো হয়েছে! ✓');
+// }
+function sendMessage() {
+
+  const n = document.getElementById('formName').value;
+  const e = document.getElementById('formEmail').value;
+  const m = document.getElementById('formMessage').value;
+
+  if(!n || !e || !m){
+    showToast('সব ফিল্ড পূরণ করুন!');
+    return;
+  }
+
+  const params = {
+    from_name: n,
+    from_email: e,
+    message: m
+  };
+
+  emailjs.send(
+    "YOUR_SERVICE_ID",
+    "YOUR_TEMPLATE_ID",
+    params
+  )
+  .then(function(){
+
+    document.getElementById('formName').value='';
+    document.getElementById('formEmail').value='';
+    document.getElementById('formMessage').value='';
+
+    showToast('বার্তা সফলভাবে পাঠানো হয়েছে! ✓');
+
+  })
+  .catch(function(error){
+
+    console.error(error);
+    showToast('বার্তা পাঠানো যায়নি!');
+
+  });
 }
 
 // ── TOAST ──
@@ -1296,6 +1406,11 @@ function showToast(msg){
 renderProjects();
 observeReveal();
 setTimeout(animateBars,500);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+emailjs.init("YOUR_PUBLIC_KEY");
 </script>
 </body>
 </html>
