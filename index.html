@@ -376,13 +376,22 @@ section{padding:100px 5%;position:relative}
   background:var(--accent);color:#000;border-color:var(--accent);font-weight:700;
 }
 .skills-panel{display:none;animation:fadeUp 0.4s ease both}
-.skills-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem}
+.skills-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:1rem}
+/* .skills-panel.active{
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:100px;
+  gap:1rem;
+  overflow-x:hidden;
+} */
 .skill-card{
   background:var(--surface);border:1px solid var(--border);
   border-radius:var(--radius-sm);padding:1.25rem;
   text-align:center;cursor:default;
   transition:all var(--transition);
 }
+
+ 
 .skill-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:var(--glow)}
 .skill-icon{font-size:1.8rem;margin-bottom:0.75rem}
 .skill-name{font-size:0.85rem;font-weight:600;color:var(--text)}
@@ -867,15 +876,16 @@ footer .foot-accent{color:var(--accent);font-weight:600}
     <p class="section-sub reveal" data-en="A blend of creative design tools and modern web development technologies." data-bn="ক্রিয়েটিভ ডিজাইন টুলস এবং আধুনিক ওয়েব ডেভেলপমেন্ট প্রযুক্তির সমন্বয়।">A blend of creative design tools and modern web development technologies.</p>
     <div class="skills-tabs">
       <button class="stab active" onclick="switchSkill('dev')" data-en="Development Skills" data-bn="ডেভেলপমেন্ট দক্ষতা">Development Skills</button>
-      <!-- <button class="stab" onclick="switchSkill('design')" data-en="Design Skills" data-bn="ডিজাইন দক্ষতা">Tools</button> -->
+      <button class="stab" onclick="switchSkill('design')" data-en="Tools Skills" data-bn="ডিজাইন দক্ষতা">Tools</button>
     </div>
-    <!-- <div class="skills-panel" id="panel-design">
-      <div class="skill-card reveal"><div class="skill-icon">🎨</div><div class="skill-name">Adobe Photoshop</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
-      <div class="skill-card reveal"><div class="skill-icon">✏️</div><div class="skill-name">Adobe Illustrator</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
+    <div class="skills-panel" id="panel-design">
+      <div class="skill-card reveal"><div class="skill-icon">🐙</div><div class="skill-name">Git</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🎨</div><div class="skill-name">Postman</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
+      <!-- <div class="skill-card reveal"><div class="skill-icon">✏️</div><div class="skill-name">Adobe Illustrator</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
       <div class="skill-card reveal"><div class="skill-icon">🏷️</div><div class="skill-name">Logo Design</div><div class="skill-level"><div class="skill-bar" data-w="88"></div></div></div>
       <div class="skill-card reveal"><div class="skill-icon">📱</div><div class="skill-name">Social Media Design</div><div class="skill-level"><div class="skill-bar" data-w="92"></div></div></div>
-      <div class="skill-card reveal"><div class="skill-icon">🌟</div><div class="skill-name">Branding</div><div class="skill-level"><div class="skill-bar" data-w="80"></div></div></div>
-    </div> -->
+      <div class="skill-card reveal"><div class="skill-icon">🌟</div><div class="skill-name">Branding</div><div class="skill-level"><div class="skill-bar" data-w="80"></div></div></div> -->
+    </div>
     <div class="skills-panel active" id="panel-dev">
       <div class="skill-card reveal"><div class="skill-icon">🌐</div><div class="skill-name">HTML</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
       <div class="skill-card reveal"><div class="skill-icon">🎨</div><div class="skill-name">CSS</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
@@ -885,7 +895,7 @@ footer .foot-accent{color:var(--accent);font-weight:600}
       <div class="skill-card reveal"><div class="skill-icon">🔷</div><div class="skill-name">ASP.NET Core</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
       <div class="skill-card reveal"><div class="skill-icon">🗄️</div><div class="skill-name">SQL Server</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
       <div class="skill-card reveal"><div class="skill-icon">🔗</div><div class="skill-name">Entity Framework</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
-      <div class="skill-card reveal"><div class="skill-icon">🐙</div><div class="skill-name">Git & GitHub</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div>
+      <!-- <div class="skill-card reveal"><div class="skill-icon">🐙</div><div class="skill-name">Git & GitHub</div><div class="skill-level"><div class="skill-bar" data-w="100"></div></div></div> -->
     </div>
   </div>
 </section>
